@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>Fraction Frenzy — Learn Fractions by Playing</title>
+    <meta name="description" content="Fraction Frenzy — an interactive game for learning fractions using a colorful slice-based fraction circle." />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Fraction Frenzy" />
+    <meta property="og:description" content="An interactive game for learning fractions using a colorful slice-based fraction circle." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Fraction Frenzy" />
+    <meta name="twitter:description" content="An interactive game for learning fractions using a colorful slice-based fraction circle." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <!-- ==================== APP ROOT ==================== -->
+    <div class="app">
+      <!-- Decorative floating shapes for the background (purely visual, hidden from AT) -->
+      <div class="bg-decor" aria-hidden="true">
+        <span class="floatie floatie-1"></span>
+        <span class="floatie floatie-2"></span>
+        <span class="floatie floatie-3"></span>
+        <span class="floatie floatie-4"></span>
+      </div>
+
+      <!-- ---------- Header ---------- -->
+      <header class="app-header">
+        <h1 class="app-title">
+          <span class="title-slice">🍕</span> Fraction Frenzy
+        </h1>
+        <p class="instructions">
+          Build the <strong>current fraction</strong> to match the
+          <strong>target fraction</strong> by adding or removing slices from the pie.
+          Get it right to score points and level up!
+        </p>
+      </header>
+
+      <!-- ---------- Top status bar: score, level, difficulty ---------- -->
+      <section class="stats-bar" aria-label="Game status">
+        <div class="stat-card" id="scoreCard">
+          <span class="stat-label">Score</span>
+          <span class="stat-value" id="scoreValue">0</span>
+        </div>
+        <div class="stat-card" id="levelCard">
+          <span class="stat-label">Level</span>
+          <span class="stat-value" id="levelValue">1</span>
+        </div>
+        <div class="stat-card difficulty-card">
+          <label class="stat-label" for="difficultySelect">Difficulty</label>
+          <select id="difficultySelect" class="difficulty-select" aria-label="Select difficulty level">
+            <option value="easy">Easy · 4 slices</option>
+            <option value="medium" selected>Medium · 8 slices</option>
+            <option value="hard">Hard · 12 slices</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- ---------- Progress bar ---------- -->
+      <section class="progress-section" aria-label="Level progress">
+        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressTrack">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <span class="progress-caption" id="progressCaption">Level progress</span>
+      </section>
+
+      <!-- ---------- Main game area ---------- -->
+      <main class="game-area">
+        <!-- Fraction circle -->
+        <div class="circle-panel">
+          <div class="circle-wrapper">
+            <svg
+              id="fractionCircle"
+              class="fraction-circle"
+              viewBox="0 0 320 320"
+              role="img"
+              aria-label="Fraction circle showing the current fraction as shaded pie slices"
+            ></svg>
+            <div class="circle-center-label" id="circleCenterLabel">0/8</div>
+          </div>
+        </div>
+
+        <!-- Fraction cards -->
+        <div class="cards-panel">
+          <div class="fraction-card target-card" id="targetCard">
+            <h2 class="card-title">Target Fraction</h2>
+            <p class="fraction-display" id="targetFractionDisplay">?/?</p>
+            <p class="card-hint">This is what you need to build</p>
+          </div>
+
+          <div class="fraction-card current-card" id="currentCard">
+            <h2 class="card-title">Current Fraction</h2>
+            <p class="fraction-display" id="currentFractionDisplay">0/8</p>
+            <p class="card-hint">This updates as you add or remove slices</p>
+          </div>
+
+          <!-- Feedback message -->
+          <p class="feedback-message" id="feedbackMessage" role="alert" aria-live="polite"></p>
+        </div>
+      </main>
+
+      <!-- ---------- Controls ---------- -->
+      <section class="controls" aria-label="Game controls">
+        <button type="button" id="addPieceBtn" class="btn btn-add" aria-label="Add a piece to the fraction circle">
+          <span class="btn-icon" aria-hidden="true">+</span> Add Piece
+        </button>
+        <button type="button" id="removePieceBtn" class="btn btn-remove" aria-label="Remove a piece from the fraction circle">
+          <span class="btn-icon" aria-hidden="true">−</span> Remove Piece
+        </button>
+        <button type="button" id="checkAnswerBtn" class="btn btn-check" aria-label="Check your answer against the target fraction">
+          ✓ Check Answer
+        </button>
+        <button type="button" id="nextLevelBtn" class="btn btn-next" aria-label="Move on to the next level" disabled>
+          Next Level →
+        </button>
+        <button type="button" id="resetGameBtn" class="btn btn-reset" aria-label="Reset the whole game">
+          ⟲ Reset Game
+        </button>
+      </section>
+
+      <footer class="app-footer">
+        <p>Built with plain HTML, CSS &amp; JavaScript — no frameworks involved.</p>
+      </footer>
+    </div>
+
+    <!-- Confetti pieces are injected here on a correct answer -->
+    <div id="confettiContainer" class="confetti-container" aria-hidden="true"></div>
+
+    <script type="module" src="/src/script.js"></script>
+  </body>
+</html>
