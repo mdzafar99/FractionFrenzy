@@ -1,0 +1,780 @@
+/* =========================================================================
+   Fraction Frenzy — Stylesheet
+   A colorful, modern educational game UI.
+   Organized top-to-bottom: variables, layout, components, animations,
+   responsive breakpoints.
+   ========================================================================= */
+
+/* ---------- Design tokens ---------- */
+:root {
+  --color-purple: #7c5cff;
+  --color-pink: #ff5ca8;
+  --color-orange: #ff9f5c;
+  --color-blue: #3fb6ff;
+  --color-teal: #2fd6b0;
+  --color-yellow: #ffd23f;
+
+  --color-success: #1fa971;
+  --color-success-bg: #e4faf1;
+  --color-error: #e0355b;
+  --color-error-bg: #fdeaee;
+
+  --color-ink: #2c2450;
+  --color-ink-soft: #5c5480;
+  --color-card-bg: rgba(255, 255, 255, 0.92);
+  --color-card-border: rgba(255, 255, 255, 0.6);
+
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 10px;
+
+  --shadow-soft: 0 10px 30px rgba(60, 30, 110, 0.18);
+  --shadow-strong: 0 16px 40px rgba(60, 30, 110, 0.28);
+
+  --font-display: 'Baloo 2', 'Nunito', sans-serif;
+  --font-body: 'Nunito', sans-serif;
+}
+
+/* ---------- Reset ---------- */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #6a5cff 0%,
+    #a35cff 22%,
+    #ff5ca8 48%,
+    #ff9f5c 72%,
+    #ffd23f 100%
+  );
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+}
+
+select {
+  font-family: inherit;
+}
+
+/* ---------- App shell ---------- */
+.app {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(16px, 4vw, 40px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2.5vw, 28px);
+  min-height: 100vh;
+}
+
+/* Decorative floating background shapes */
+.bg-decor {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.floatie {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  filter: blur(2px);
+  animation: floatUpDown 9s ease-in-out infinite;
+}
+
+.floatie-1 {
+  width: 140px;
+  height: 140px;
+  top: 8%;
+  left: 6%;
+  animation-duration: 10s;
+}
+
+.floatie-2 {
+  width: 90px;
+  height: 90px;
+  top: 65%;
+  left: 12%;
+  animation-duration: 7.5s;
+  animation-delay: 1s;
+}
+
+.floatie-3 {
+  width: 110px;
+  height: 110px;
+  top: 20%;
+  right: 8%;
+  animation-duration: 11s;
+  animation-delay: 0.5s;
+}
+
+.floatie-4 {
+  width: 70px;
+  height: 70px;
+  bottom: 10%;
+  right: 18%;
+  animation-duration: 8s;
+  animation-delay: 2s;
+}
+
+@keyframes floatUpDown {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-24px) translateX(10px);
+  }
+}
+
+/* ---------- Header ---------- */
+.app-header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  animation: fadeInDown 0.6s ease both;
+}
+
+.app-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: #ffffff;
+  text-shadow: 0 4px 18px rgba(50, 20, 90, 0.35);
+  margin: 0 0 8px;
+  letter-spacing: 0.5px;
+}
+
+.title-slice {
+  display: inline-block;
+  animation: wiggle 3.2s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(-12deg);
+  }
+  20% {
+    transform: rotate(10deg);
+  }
+  30% {
+    transform: rotate(0deg);
+  }
+}
+
+.instructions {
+  max-width: 640px;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+  line-height: 1.5;
+}
+
+.instructions strong {
+  color: #fff;
+  font-weight: 800;
+}
+
+/* ---------- Stats bar ---------- */
+.stats-bar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  animation: fadeInUp 0.6s ease 0.05s both;
+}
+
+.stat-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  padding: 12px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 110px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-strong);
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-ink-soft);
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-purple);
+  transition: transform 0.25s ease;
+}
+
+/* Pulse the score/level number whenever it changes */
+.stat-value.bump {
+  animation: bump 0.4s ease;
+}
+
+@keyframes bump {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.35);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.difficulty-card {
+  min-width: 170px;
+}
+
+.difficulty-select {
+  border: 2px solid rgba(124, 92, 255, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.15s ease;
+}
+
+.difficulty-select:hover {
+  border-color: var(--color-purple);
+}
+
+.difficulty-select:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 2px;
+}
+
+/* ---------- Progress bar ---------- */
+.progress-section {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  animation: fadeInUp 0.6s ease 0.1s both;
+}
+
+.progress-track {
+  width: min(520px, 100%);
+  height: 18px;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-teal), var(--color-blue), var(--color-purple));
+  background-size: 200% 100%;
+  transition: width 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
+.progress-caption {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ---------- Main game area ---------- */
+.game-area {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(16px, 3vw, 32px);
+  align-items: stretch;
+}
+
+.circle-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: clamp(16px, 3vw, 28px);
+  animation: fadeIn 0.7s ease 0.1s both;
+}
+
+.circle-wrapper {
+  position: relative;
+  width: min(360px, 100%);
+  aspect-ratio: 1 / 1;
+}
+
+.fraction-circle {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+/* Individual pie slice */
+.slice {
+  fill: #eef0fb;
+  stroke: #ffffff;
+  stroke-width: 3;
+  cursor: pointer;
+  transition: fill 0.45s ease, transform 0.3s ease, filter 0.3s ease;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.slice:hover {
+  filter: brightness(1.06);
+  transform: scale(1.02);
+}
+
+.slice:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 2px;
+}
+
+.slice.shaded {
+  animation: sliceFillPop 0.45s ease;
+}
+
+@keyframes sliceFillPop {
+  0% {
+    transform: scale(0.85);
+  }
+  55% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.slice.unshading {
+  animation: sliceUnfillPop 0.35s ease;
+}
+
+@keyframes sliceUnfillPop {
+  0% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.circle-center-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  color: var(--color-ink);
+  background: #ffffff;
+  border-radius: 50%;
+  width: 30%;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(60, 30, 110, 0.18);
+  pointer-events: none;
+  transition: transform 0.25s ease;
+}
+
+.circle-center-label.bump {
+  animation: bump 0.4s ease;
+}
+
+/* ---------- Fraction / feedback cards ---------- */
+.cards-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fraction-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: clamp(16px, 3vw, 22px);
+  text-align: center;
+  animation: fadeIn 0.7s ease both;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.fraction-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-strong);
+}
+
+.target-card {
+  border-top: 5px solid var(--color-pink);
+}
+
+.current-card {
+  border-top: 5px solid var(--color-blue);
+}
+
+.card-title {
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-ink-soft);
+}
+
+.fraction-display {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.6rem);
+  font-weight: 800;
+  margin: 4px 0;
+  color: var(--color-purple);
+  transition: transform 0.3s ease;
+}
+
+.target-card .fraction-display {
+  color: var(--color-pink);
+}
+
+.fraction-display.bump {
+  animation: bump 0.4s ease;
+}
+
+.card-hint {
+  margin: 4px 0 0;
+  font-size: 0.8rem;
+  color: var(--color-ink-soft);
+}
+
+/* Feedback message */
+.feedback-message {
+  min-height: 1.4em;
+  margin: 0;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  font-weight: 800;
+  text-align: center;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.feedback-message.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.feedback-message.correct {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+  animation: popIn 0.4s ease;
+}
+
+.feedback-message.incorrect {
+  background: var(--color-error-bg);
+  color: var(--color-error);
+  animation: shake 0.4s ease;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.9);
+  }
+  60% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+}
+
+/* ---------- Controls ---------- */
+.controls {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  animation: fadeInUp 0.7s ease 0.15s both;
+}
+
+.btn {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 13px 24px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 8px 18px rgba(60, 30, 110, 0.22);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease, opacity 0.2s ease;
+}
+
+.btn-icon {
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 26px rgba(60, 30, 110, 0.3);
+  filter: brightness(1.05);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.97);
+  box-shadow: 0 4px 10px rgba(60, 30, 110, 0.25);
+}
+
+.btn:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.3);
+  box-shadow: none;
+  transform: none;
+}
+
+.btn-add {
+  background: linear-gradient(135deg, var(--color-teal), #1fc6a4);
+}
+
+.btn-remove {
+  background: linear-gradient(135deg, var(--color-orange), #ff7a45);
+}
+
+.btn-check {
+  background: linear-gradient(135deg, var(--color-blue), #2f8fff);
+}
+
+.btn-next {
+  background: linear-gradient(135deg, var(--color-purple), #5a3dff);
+}
+
+.btn-reset {
+  background: linear-gradient(135deg, var(--color-pink), #e6397e);
+}
+
+/* Little click-pulse animation, toggled via JS by adding/removing a class */
+.btn.clicked {
+  animation: clickPulse 0.25s ease;
+}
+
+@keyframes clickPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.92);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ---------- Footer ---------- */
+.app-footer {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.8rem;
+  padding-top: 4px;
+}
+
+/* ---------- Confetti ---------- */
+.confetti-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 50;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 16px;
+  opacity: 0.95;
+  animation-name: confettiFall;
+  animation-timing-function: cubic-bezier(0.4, 0.1, 0.6, 0.9);
+  animation-fill-mode: forwards;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-10px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(540deg);
+    opacity: 0.9;
+  }
+}
+
+/* ---------- Shared entrance animations ---------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Responsive breakpoints ---------- */
+
+/* Tablet */
+@media (max-width: 860px) {
+  .game-area {
+    grid-template-columns: 1fr;
+  }
+
+  .circle-wrapper {
+    width: min(320px, 80vw);
+  }
+}
+
+/* Mobile */
+@media (max-width: 520px) {
+  .app-title {
+    font-size: 1.7rem;
+  }
+
+  .stat-card {
+    min-width: 90px;
+    padding: 10px 16px;
+  }
+
+  .btn {
+    flex: 1 1 calc(50% - 12px);
+    justify-content: center;
+    padding: 12px 14px;
+    font-size: 0.85rem;
+  }
+
+  .controls {
+    gap: 10px;
+  }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
