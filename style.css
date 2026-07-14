@@ -1,11 +1,4 @@
-/* =========================================================================
-   Fraction Frenzy — Stylesheet
-   A colorful, modern educational game UI.
-   Organized top-to-bottom: variables, layout, components, animations,
-   responsive breakpoints.
-   ========================================================================= */
 
-/* ---------- Design tokens ---------- */
 :root {
   --color-purple: #7c5cff;
   --color-pink: #ff5ca8;
@@ -35,7 +28,6 @@
   --font-body: 'Nunito', sans-serif;
 }
 
-/* ---------- Reset ---------- */
 * {
   box-sizing: border-box;
 }
@@ -70,7 +62,7 @@ select {
   font-family: inherit;
 }
 
-/* ---------- App shell ---------- */
+
 .app {
   position: relative;
   max-width: 1100px;
