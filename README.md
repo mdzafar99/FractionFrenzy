@@ -60,15 +60,15 @@ Whether you're a beginner or simply looking to improve your fraction skills, Fra
 
 <h2>📂 Project Structure</h2>
 
-FractionFrenzy
-│
+```text
+FractionFrenzy/
+├── src/
+│   └── favicon.png
 ├── index.html
 ├── style.css
 ├── script.js
-├── assets/
-├── images/
 └── README.md
-
+```
 ---
 
 <h2>🎯 Learning Goals</h2>
