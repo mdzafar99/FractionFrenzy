@@ -1,4 +1,4 @@
-<div align="center">🧩 Fraction Frenzy
+<div align="center"> <h2>🧩 Fraction Frenzy</h2>
 
 Learn Fractions Through Fun & Interactive Gameplay
 
@@ -17,7 +17,7 @@ An engaging educational web game that transforms learning fractions into an exci
 <img src="https://img.shields.io/badge/Responsive-Yes-success?style=flat-square"/>
 <img src="https://img.shields.io/badge/Open%20Source-❤-red?style=flat-square"/></div>---
 
-📖 About
+<h2>📖 About</h2>
 
 Fraction Frenzy is an educational browser game developed to make learning fractions enjoyable and interactive. It combines mathematics with engaging gameplay to help students strengthen their understanding of fractions through practice and instant feedback.
 
@@ -25,7 +25,7 @@ Whether you're a beginner or simply looking to improve your fraction skills, Fra
 
 ---
 
-✨ Features
+<h2>✨ Features</h2>
 
 - 🎮 Interactive gameplay
 - 🧩 Fraction-based challenges
@@ -39,7 +39,7 @@ Whether you're a beginner or simply looking to improve your fraction skills, Fra
 
 ---
 
-🛠️ Tech Stack
+<h2>🛠️ Tech Stack</h2>
 
 Technology| Purpose
 HTML5| Structure
@@ -49,13 +49,13 @@ GitHub Pages| Deployment
 
 ---
 
-🚀 Live Demo
+<h2>🚀 Live Demo</h2>
 
 👉 Play Here(https://mdzafar99.github.io/FractionFrenzy/)
 
 ---
 
-📂 Project Structure
+<h2>📂 Project Structure</h2>
 
 FractionFrenzy
 │
@@ -68,7 +68,7 @@ FractionFrenzy
 
 ---
 
-🎯 Learning Goals
+<h2>🎯 Learning Goals</h2>
 
 ✔ Understand fractions
 
@@ -82,7 +82,7 @@ FractionFrenzy
 
 ---
 
-📸 Screenshots
+<h2>📸 Screenshots</h2>
 
 «Replace these with actual screenshots.»
 
@@ -96,7 +96,7 @@ FractionFrenzy
 
 ---
 
-🔮 Future Roadmap
+<h2>🔮 Future Roadmap</h2>
 
 - ⏱ Timer Mode
 - 🏆 Leaderboard
@@ -110,7 +110,7 @@ FractionFrenzy
 
 ---
 
-🤝 Contributing
+<h2>🤝 Contributing</h2>
 
 Contributions are always welcome!
 
@@ -129,17 +129,17 @@ Finally, create a Pull Request.
 
 ---
 
-📜 License
+<h2>📜 License</h2>
 
 This project is licensed under the MIT License.
 
 ---
 
-👨‍💻 Developer
+<h2>👨‍💻 Developer</h2>
 
 MD ZAFAR
 
-💼 Portfolio
+<h2>💼 Portfolio</h2>
 https://mdzafar99.github.io/MD-ZAFAR-Portfolio/
 
 💻 GitHub
@@ -147,7 +147,7 @@ https://github.com/mdzafar99
 
 ---
 
-<div align="center">⭐ Show Your Support
+<div align="center"><h2>⭐ Show Your Support</h2>
 
 If you enjoyed this project,
 
@@ -165,13 +165,13 @@ Happy Learning! 🚀
 
 ---
 
-📄 License
+<h2>📄 License</h2>
 
 This project is licensed under the MIT License.
 
 ---
 
-👨‍💻 Author
+<h2>👨‍💻 Author</h2>
 
 MD ZAFAR
 
@@ -180,6 +180,6 @@ MD ZAFAR
 
 ---
 
-⭐ Support
+<h2>⭐ Support</h2>
 
 If you found this project helpful, please consider giving it a ⭐ Star on GitHub. It helps support the project and encourages future improvements.
