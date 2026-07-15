@@ -41,11 +41,14 @@ Whether you're a beginner or simply looking to improve your fraction skills, Fra
 
 <h2>🛠️ Tech Stack</h2>
 
-Technology| Purpose
-HTML5| Structure
-CSS3| Styling & Animations
-JavaScript (ES6)| Game Logic
-GitHub Pages| Deployment
+| Technology | Purpose |
+|------------|---------|
+| **HTML5** | Structure and semantic markup |
+| **CSS3** | Styling, animations, and responsive design |
+| **JavaScript (ES6)** | Game logic and interactivity |
+| **Git** | Version control |
+| **GitHub** | Source code hosting |
+| **GitHub Pages** | Project deployment |
 
 ---
 
