@@ -110,25 +110,6 @@ FractionFrenzy
 
 ---
 
-<h2>🤝 Contributing</h2>
-
-Contributions are always welcome!
-
-# Fork Repository
-
-# Create Branch
-git checkout -b feature-name
-
-# Commit Changes
-git commit -m "Add new feature"
-
-# Push Changes
-git push origin feature-name
-
-Finally, create a Pull Request.
-
----
-
 <h2>📜 License</h2>
 
 This project is licensed under the MIT License.
