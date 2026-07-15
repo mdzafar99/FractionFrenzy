@@ -54,7 +54,7 @@ Whether you're a beginner or simply looking to improve your fraction skills, Fra
 
 <h2>🚀 Live Demo</h2>
 
-👉 Play Here(https://mdzafar99.github.io/FractionFrenzy/)
+👉 [Play Here](https://mdzafar99.github.io/FractionFrenzy/)
 
 ---
 
@@ -123,11 +123,9 @@ This project is licensed under the MIT License.
 
 MD ZAFAR
 
-💼 Portfolio
-https://mdzafar99.github.io/MD-ZAFAR-Portfolio/
+💼 [Portfolio](https://mdzafar99.github.io/MD-ZAFAR-Portfolio/)
 
-💻 GitHub
-https://github.com/mdzafar99
+💻 [GitHub](https://github.com/mdzafar99)
 
 ---
 
