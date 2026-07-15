@@ -139,7 +139,7 @@ This project is licensed under the MIT License.
 
 MD ZAFAR
 
-<h2>💼 Portfolio</h2>
+💼 Portfolio
 https://mdzafar99.github.io/MD-ZAFAR-Portfolio/
 
 💻 GitHub
@@ -159,9 +159,7 @@ If you enjoyed this project,
 
 Happy Learning! 🚀
 
-</div>4. Commit your changes.
-5. Push the branch.
-6. Open a Pull Request.
+</div>
 
 ---
 
