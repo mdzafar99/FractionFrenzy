@@ -87,15 +87,7 @@ FractionFrenzy/
 
 <h2>📸 Screenshots</h2>
 
-«Replace these with actual screenshots.»
-
-📷 Home Screen
-
-📷 Gameplay
-
-📷 Correct Answer
-
-📷 Final Score
+<img width="2298" height="2348" alt="Image" src="https://github.com/user-attachments/assets/8ccdb20c-da8e-443e-8356-7b492ab08492" />
 
 ---
 
